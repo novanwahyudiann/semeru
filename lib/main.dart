@@ -1,91 +1,189 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  static const String _title = 'Flutter Stateful Clicker Counter';
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
-      theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
+      home: Semeru(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-  // This class is the configuration for the state.
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
+class Semeru extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      backgroundColor: Color(0xFFE0F2F1),
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: const Text('Flutter Demo Click Counter'),
+        leading: Icon(Icons.landscape),
+        title: Text("Gunung Semeru"),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: const TextStyle(fontSize: 25),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Foto
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'asset/semeru.png',
+                  width: double.infinity,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              // Nama gunung
+              Text(
+                "Gunung Semeru",
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 5),
+
+              Text(
+                "Jawa Timur, Indonesia",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16,
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              // Informasi
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      color: Colors.blue[50],
+                      child: Column(
+                        children: [
+                          Text("Ketinggian"),
+                          SizedBox(height: 5),
+                          Text(
+                            "3.676 mdpl",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(15),
+                      color: Colors.green[50],
+                      child: Column(
+                        children: [
+                          Text("Status"),
+                          SizedBox(height: 5),
+                          Text(
+                            "Gunung Api",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              // Tentang
+              Text(
+                "Tentang Semeru",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              SizedBox(height: 10),
+
+              Text(
+                "Gunung Semeru adalah gunung tertinggi "
+                "di Pulau Jawa dengan ketinggian sekitar "
+                "3.676 meter di atas permukaan laut. "
+                "Gunung ini berada di Jawa Timur.",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              // Lokasi
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(15),
+                color: Colors.blue[50],
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Lokasi",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text("Kabupaten Malang"),
+                    Text("Jawa Timur"),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 20),
+
+              // Pesan
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(15),
+                color: Colors.green[50],
+                child: Text(
+                  "Jaga kebersihan dan kelestarian "
+                  "alam Gunung Semeru.",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+
+              SizedBox(height: 30),
+
+              Center(
+                child: Text(
+                  "SEMERU • EAST JAVA",
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
